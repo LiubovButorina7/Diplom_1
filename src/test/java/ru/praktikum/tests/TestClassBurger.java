@@ -2,12 +2,16 @@ package ru.praktikum.tests;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.mockito.junit.MockitoJUnitRunner;
 import praktikum.*;
 
 import static org.junit.Assert.assertEquals;
 
+@RunWith(MockitoJUnitRunner.class)
 public class TestClassBurger {
     private Burger burger;
     @Mock
@@ -16,7 +20,6 @@ public class TestClassBurger {
     @Before
     public void setUp() {
         burger = new Burger();
-        MockitoAnnotations.initMocks(this);
     }
 
     @Test

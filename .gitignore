@@ -1,4 +1,4 @@
 *.class
 *.idea
 *.build
-*.target
+target/

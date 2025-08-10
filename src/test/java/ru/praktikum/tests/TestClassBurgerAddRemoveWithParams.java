@@ -12,14 +12,14 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 
 @RunWith(Parameterized.class)
-public class TestClassBurgerWithParams {
+public class TestClassBurgerAddRemoveWithParams {
     private Burger burger;
 
     private final IngredientType type;
     private final String name;
     private final float price;
 
-    public TestClassBurgerWithParams(IngredientType type, String name, float price) {
+    public TestClassBurgerAddRemoveWithParams(IngredientType type, String name, float price) {
         this.type = type;
         this.name = name;
         this.price = price;

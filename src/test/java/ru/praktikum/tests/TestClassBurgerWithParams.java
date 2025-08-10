@@ -9,6 +9,7 @@ import praktikum.Ingredient;
 import praktikum.IngredientType;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 
 @RunWith(Parameterized.class)
 public class TestClassBurgerWithParams {
@@ -40,9 +41,22 @@ public class TestClassBurgerWithParams {
     @Test
     public void testAddIngredient() throws Exception {
         Ingredient ingredient = new Ingredient(type, name, price);
-        burger.addIngredient(ingredient);
+        assertEquals(0, burger.ingredients.size());
 
+        burger.addIngredient(ingredient);
         assertEquals(1, burger.ingredients.size());
         assertEquals(ingredient, burger.ingredients.get(0));
     }
+
+    @Test
+    public void testRemoveIngredient() throws Exception {
+        Ingredient ingredient = new Ingredient(type, name, price);
+        burger.addIngredient(ingredient);
+        assertEquals(1, burger.ingredients.size());
+
+        burger.removeIngredient(0);
+        assertFalse(burger.ingredients.contains(ingredient));
+        assertEquals(0, burger.ingredients.size());
+    }
+
 }

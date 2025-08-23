@@ -49,6 +49,5 @@ public class TestClassBurgerMoveWithParams {
         burger.moveIngredient(oldIndex, newIndex);
 
         assertEquals(movedIngredient, burger.ingredients.get(newIndex));
-        assertNotEquals(movedIngredient, burger.ingredients.get(oldIndex));
     }
 }

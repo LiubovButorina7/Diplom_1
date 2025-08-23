@@ -16,11 +16,11 @@ public class TestClassBurger {
     @Mock
     private Bun mockBun;
     @Mock
-    private Ingredient mockIngredient1;
+    private Ingredient mockIngredientCutlet;
     @Mock
-    private Ingredient mockIngredient2;
+    private Ingredient mockIngredientSauce;
     @Mock
-    private Ingredient mockIngredient3;
+    private Ingredient mockIngredientSausage;
 
     @Before
     public void setUp() {
@@ -36,14 +36,14 @@ public class TestClassBurger {
     @Test
     public void testGetPrice() throws Exception {
         burger.setBuns(mockBun);
-        burger.addIngredient(mockIngredient1);
-        burger.addIngredient(mockIngredient2);
-        burger.addIngredient(mockIngredient3);
+        burger.addIngredient(mockIngredientCutlet);
+        burger.addIngredient(mockIngredientSauce);
+        burger.addIngredient(mockIngredientSausage);
 
         Mockito.when(mockBun.getPrice()).thenReturn(500f);
-        Mockito.when(mockIngredient1.getPrice()).thenReturn(200f);
-        Mockito.when(mockIngredient2.getPrice()).thenReturn(400f);
-        Mockito.when(mockIngredient3.getPrice()).thenReturn(300f);
+        Mockito.when(mockIngredientSauce.getPrice()).thenReturn(200f);
+        Mockito.when(mockIngredientCutlet.getPrice()).thenReturn(400f);
+        Mockito.when(mockIngredientSausage.getPrice()).thenReturn(300f);
 
         float expectedPrice = 1900;
         float delta = 0.001f;

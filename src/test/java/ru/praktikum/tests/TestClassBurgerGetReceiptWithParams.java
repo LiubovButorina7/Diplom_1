@@ -10,7 +10,6 @@ import praktikum.Burger;
 import praktikum.Ingredient;
 import praktikum.IngredientType;
 import org.mockito.MockitoAnnotations;
-
 import static org.junit.Assert.assertEquals;
 
 @RunWith(Parameterized.class)
@@ -84,6 +83,7 @@ public class TestClassBurgerGetReceiptWithParams {
             bunName, firstIngredientType.toString().toLowerCase(), firstIngredientName,
                      secondIngredientType.toString().toLowerCase(), secondIngredientName,
             bunName, burgerPrice);
+
         assertEquals(expectedReceipt, burger.getReceipt());
     }
 

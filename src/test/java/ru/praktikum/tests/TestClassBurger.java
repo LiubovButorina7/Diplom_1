@@ -7,20 +7,20 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 import praktikum.*;
-
 import static org.junit.Assert.assertEquals;
 
 @RunWith(MockitoJUnitRunner.class)
 public class TestClassBurger {
     private Burger burger;
+
     @Mock
     private Bun mockBun;
     @Mock
-    private Ingredient mockIngredientCutlet;
+    private Ingredient mockIngredientFirst;
     @Mock
-    private Ingredient mockIngredientSauce;
+    private Ingredient mockIngredientSecond;
     @Mock
-    private Ingredient mockIngredientSausage;
+    private Ingredient mockIngredientThird;
 
     @Before
     public void setUp() {
@@ -34,19 +34,34 @@ public class TestClassBurger {
     }
 
     @Test
+    public void testAddIngredient() throws Exception {
+        burger.addIngredient(mockIngredientFirst);
+        assertEquals(1, burger.ingredients.size());
+    }
+
+    @Test
+    public void testRemoveIngredient() throws Exception {
+        burger.addIngredient(mockIngredientFirst);
+        burger.addIngredient(mockIngredientSecond);
+        burger.removeIngredient(0);
+        assertEquals(1, burger.ingredients.size());
+    }
+
+    @Test
     public void testGetPrice() throws Exception {
         burger.setBuns(mockBun);
-        burger.addIngredient(mockIngredientCutlet);
-        burger.addIngredient(mockIngredientSauce);
-        burger.addIngredient(mockIngredientSausage);
+        burger.addIngredient(mockIngredientFirst);
+        burger.addIngredient(mockIngredientSecond);
+        burger.addIngredient(mockIngredientThird);
 
         Mockito.when(mockBun.getPrice()).thenReturn(500f);
-        Mockito.when(mockIngredientSauce.getPrice()).thenReturn(200f);
-        Mockito.when(mockIngredientCutlet.getPrice()).thenReturn(400f);
-        Mockito.when(mockIngredientSausage.getPrice()).thenReturn(300f);
+        Mockito.when(mockIngredientFirst.getPrice()).thenReturn(200f);
+        Mockito.when(mockIngredientSecond.getPrice()).thenReturn(400f);
+        Mockito.when(mockIngredientThird.getPrice()).thenReturn(300f);
 
         float expectedPrice = 1900;
         float delta = 0.001f;
+
         assertEquals(expectedPrice, burger.getPrice(), delta);
     }
 

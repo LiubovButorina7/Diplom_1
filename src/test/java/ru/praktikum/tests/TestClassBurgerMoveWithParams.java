@@ -4,15 +4,22 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 import praktikum.Burger;
 import praktikum.Ingredient;
-import praktikum.IngredientType;
-
 import static org.junit.Assert.*;
 
 @RunWith(Parameterized.class)
 public class TestClassBurgerMoveWithParams {
     private Burger burger;
+
+    @Mock
+    private Ingredient mockIngredientFirst;
+    @Mock
+    private Ingredient mockIngredientSecond;
+    @Mock
+    private Ingredient mockIngredientThird;
 
     private final int oldIndex;
     private final int newIndex;
@@ -20,6 +27,8 @@ public class TestClassBurgerMoveWithParams {
     public TestClassBurgerMoveWithParams(int oldIndex, int newIndex) {
         this.oldIndex = oldIndex;
         this.newIndex = newIndex;
+
+        MockitoAnnotations.initMocks(this);
     }
 
     @Parameterized.Parameters(name = "Тестовые данные {index}: {0} {1}")
@@ -37,13 +46,10 @@ public class TestClassBurgerMoveWithParams {
     }
 
     @Test
-    public void testRemoveIngredient() throws Exception {
-        Ingredient ingredient1 = new Ingredient(IngredientType.FILLING, "cutlet", 100);
-        Ingredient ingredient2 = new Ingredient(IngredientType.SAUCE, "chili sauce", 300);
-        Ingredient ingredient3 = new Ingredient(IngredientType.SAUCE, "hot sauce", 100);
-        burger.addIngredient(ingredient1);
-        burger.addIngredient(ingredient2);
-        burger.addIngredient(ingredient3);
+    public void testMoveIngredient() throws Exception {
+        burger.addIngredient(mockIngredientFirst);
+        burger.addIngredient(mockIngredientSecond);
+        burger.addIngredient(mockIngredientThird);
 
         Ingredient movedIngredient = burger.ingredients.get(oldIndex);
         burger.moveIngredient(oldIndex, newIndex);
